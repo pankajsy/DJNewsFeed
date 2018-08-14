@@ -98,6 +98,14 @@
           text-decoration: none;
         }
 
+        .footernavbar a.right {
+          float: right;
+          display: block;
+          text-align: center;
+          padding-right: 255px;
+          text-decoration: none;
+        }
+
        /* .pagination a {
             color: black;
             bottom: 0;
@@ -119,6 +127,13 @@
             margin-left: 200px; /* Same as the width of the sidenav */
             font-size: 15px; /* Increased text to enable scrolling */
             padding: 0px 10px;
+        }
+
+
+
+        hr {
+            margin: auto;
+            width: 40%;
         }
 
         @media screen and (max-height: 450px) {

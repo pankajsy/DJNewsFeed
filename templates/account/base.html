@@ -15,24 +15,17 @@
 <div class="sidenav">
     <a href=""><img src="{% static 'account/images/fav.ico' %}" height="25"/> {{APP_NAME}}</a>
     {% if user.is_authenticated %}
-        <a>-----------------------------</a>
+
         <a href="">LOGGED IN: </a>
         <a href="">{{ user.email }}</a>
         <a href="{% url 'account:users_update' user_pk=user.user.id %}">Edit Profile</a>
         <!--<a href="">UUID:{{ user.user.uuid }}</a>-->
-        <a>-----------------------------</a>
         <a href="{% url 'account:admin_users_list' %}">List Users</a>
-        <a>-----------------------------</a>
         <a href="{% url 'core:feed' %}">New Feed</a>
-        <a>-----------------------------</a>
         <a href="{% url 'account:admin_logout' %}">LOGOUT</a>
-        <a>-----------------------------</a>
     {% else %}
-        <a>-----------------------------</a>
         <a href="{% url 'account:admin_login' %}"><b>LOGIN</b></a>
-        <a>-----------------------------</a>
         <a href="{% url 'account:admin_register' %}"><b>REGISTER</b></a>
-        <a>-----------------------------</a>
     {%endif%}
 
 </div>
@@ -52,6 +45,7 @@
           <a href="#">status</a>
           <a href="#">Keep experimenting</a>
           <a href="#">@pankajsy Github</a>
+          <a class="right" id="clock"></a>
         </div>
     {% block content %}
     {% endblock %}
@@ -96,6 +90,22 @@
         this.className += "active";
       });
     }
+</script>
+<script>
+var countdownfunction = setInterval(function() {
+    var now = new Date();
+    var distance = now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="demo"
+    document.getElementById("clock").innerHTML = now
+
+}, 1000);
 </script>
 </body>
 </html>
