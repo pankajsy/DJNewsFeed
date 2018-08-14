@@ -30,16 +30,4 @@
     {% endif %}
     </div>
 
-
-
-<script>
-    var tabs = document.getElementsByClassName("topnav")[0].getElementsByTagName("A");
-    for (var i = 0; i < tabs.length; i++) {
-      tabs[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace("active", "");
-        this.className += "active";
-      });
-    }
-</script>
 {% endblock %}
