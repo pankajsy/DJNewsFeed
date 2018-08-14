@@ -1,0 +1,76 @@
+{% extends 'account/base.html' %}
+{% block content %}
+{% load static %}
+
+    <div style="overflow-x:auto;"><h3>{{ view.title }}</h3>
+    <table >
+        <tr>
+            <th>Email</th>
+            <th>UUID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        {% for u in users %}
+        <tr>
+            <th>
+                {{u.user.email}}
+                {% if u.user.is_staff %}
+                 (staff user*)
+                {% endif %}
+            </th>
+            <th>{{u.uuid}}</th>
+            <th>{{u.user.first_name}}</th>
+            <th>{{u.user.last_name}}</th>
+            {% if user.is_staff %}
+                <th>
+                    <a class="button button4" href="{% url 'account:users_update' user_pk=u.user.id %}" style="width: 50%;">EDIT</a>
+                </th>
+
+                <th>
+                <form action="{% url 'account:admin_delete' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="button button4" type="submit" value="{{u.user.id}}" name="pk" onclick="return confirm('Are you sure?')"  style="width: 50%;">
+                        <b>DELETE</b>
+                    </button>
+                </form>
+                </th>
+            {% else %}
+                <th>
+                    <a class="button button4" href="#"  onClick="alert('Staff privileges required!')" style="width: 50%;">EDIT</a>
+                </th>
+                <th>
+                    <a class="button button4" href="#"  onClick="alert('Staff privileges required!')" style="width: 50%;">DELETE</a>
+                </th>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    {% if is_paginated %}
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
+        {% else %}
+          <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+
+
+        {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="active"><span>[ {{ i }} ]<span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <li><a href="?page={{ i }}">[ {{ i }} ]</a></li>
+          {% endif %}
+        {% endfor %}
+
+
+        {% if page_obj.has_next %}
+          <li><a href="?page={{ page_obj.next_page_number }}">&raquo; next</a></li>
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+    </div>
+{% endblock %}

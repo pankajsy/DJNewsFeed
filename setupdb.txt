@@ -1,0 +1,83 @@
+-------------------------
+
+SETUP POSTGRESQL
+sudo apt-get update
+sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+sudo su - postgres
+psql
+CREATE DATABASE dbname;
+CREATE USER user WITH PASSWORD '';
+ALTER ROLE user SET client_encoding TO 'utf8';
+ALTER ROLE user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE user SET timezone TO 'UTC';
+
+GRANT ALL PRIVILEGES ON DATABASE dbname TO user;
+
+---------------------------
+DROP DATABASE POSTGRES
+postgres=# drop database dbname;
+postgres=# create database dbname;
+postgres=# GRANT ALL PRIVILEGES ON DATABASE dbname to user;
+postgres=# \q
+
+Drop DB ERROR using instance resolved:
+postgres=# drop database dbname; ;
+ERROR:  database "dbname;" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+postgres=# SELECT pg_terminate_backend(pg_stat_activity.pid)
+FROM pg_stat_activity
+WHERE pg_stat_activity.datname = 'dbname;';
+pg_terminate_backend
+
+------------------------
+MAC
+brew update
+brew install postgres
+brew services start postgresql
+createdb
+psql
+to connect to a db - \c database_name
+to list tables in a db - \d
+to list databases - \l
+to quit \q
+
+-----------------------------------------
+CELERY COMMANDS:
+start celery server-
+celery -A sidewalkIQ worker -l info -Q queue name
+run celery
+celery -A dashboard worker -l info -Q highpriority,cronjob --autoscale=10,3
+sudo service rabbit-mq-server restart
+
+-----------------------------------------
+BBL GEOCLIENT Service Usage Guidelines
+https://developer.cityofnewyork.us/api/geoclient-api
+
+-----------------------------------------
+For weasy print
+sudo apt-get install build-essential python3-dev
+python3-pip python3-cffi libcairo2 libpango-1.0-0
+libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev
+shared-mime-info
+
+-----------------------------------------
+wkhtml
+https://codingexplained.com/dev-ops/installing-wkhtmltopdf-on-ubuntu-14-04-and-16-04
+sudo apt-get install libssl-dev=1.0.2g-1ubuntu4.11
+sudo apt-get install libssl-dev=1.0.2g-1ubuntu4
+https://github.com/incuna/django-wkhtmltopdf
+--------------------------------------
+
+FOR PILLOW
+sudo apt install libjpeg-dev zlib1g-dev
+---------------------------------------
+GITHUB delete file from github history
+git filter-branch --tree-filter 'rm -f setupdb.txt' HEAD delete file history aswell
+
+---------------------------------------
+RSYNC between Servers
+rsync -avh -e "ssh -i /dir/key.pem" --ignore-existing path/to/source/ ec2-user@server:/home/ec2-user/path/to/dest/
+---------------------------------------
+SCP between Servers
+scp -i ../../../../../key.pem -r ../../../../source/ ec2-user@server.com:/home/ec2-user/dest/
+---------------------------------------

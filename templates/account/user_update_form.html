@@ -1,0 +1,12 @@
+{% extends 'account/base.html' %}
+{% block content %}
+    <div style="width: 20%; margin: 30px auto;">
+        <form enctype="multipart/form-data" method="post" action="">
+            <label><h3>Update Profile</h3></label>
+            {% csrf_token %}
+            <!--{{ form.as_p}}-->
+            {% include 'account/base_form.html' with form=form %}
+            <input class="button button4" type="submit" value="Update" style="width: 100%;"/>
+        </form>
+    </div>
+{% endblock %}

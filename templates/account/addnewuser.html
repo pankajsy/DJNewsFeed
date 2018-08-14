@@ -1,0 +1,16 @@
+{% extends 'account/base.html' %}
+{% block content %}
+<center>
+    <h3>ADD NEW USER</h3>
+    <form enctype="multipart/form-data" method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input class="button button4" type="submit" value="ADD USER" onclick=""/>
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+    {% endif %}
+</center>
+{% endblock %}

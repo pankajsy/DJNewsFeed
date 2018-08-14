@@ -1,0 +1,26 @@
+{% extends 'account/base.html' %}
+{% block content %}
+{% load static %}
+
+    {% if registered %}
+        <strong>Thank you for registering!</strong>
+        <a href="{% url 'account:admin_index' %}">Return to the homepage.</a>
+    {% else %}
+        <div style="width: 20%; margin: 30px auto;">
+            <form id="hlform_login" method="post" action="{% url 'account:admin_register' %}" enctype="multipart/form-data">
+                <label><h3>Please register to proceed!</h3></label>
+                {% csrf_token %}
+                <!--{{ form.as_p}}-->
+                {% include 'account/base_form.html' with form=form %}
+
+                <!--{{ form.username.errors }}<br>-->
+                <!--<label>Username:</label><br>{{ form.username }}-->
+                <!--{{ form.password.errors }}<br>-->
+                <!--<label>Password:</label><br>{{ form.password }}-->
+                <!--{{ form.email.errors }}<br>-->
+                <!--<label>Email:</label><br>{{ form.email }}<br><br>-->
+                <input class="button button4" type="submit" name="submit" value="Register" style="width: 100%;"/>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
