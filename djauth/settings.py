@@ -31,7 +31,7 @@ NEWS_API_KEY = config('NEWS_API_KEY', cast=str)
 
 # Application definition
 
-APP_NAME = "DJNewsFeed"
+APP_NAME = "newZLtics"
 
 INSTALLED_APPS = [
     'django.contrib.admin',

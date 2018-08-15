@@ -81,20 +81,42 @@
 
 
         /* Add a black background color to the top navigation */
-        .topnav {
+        .toptopnav {
             /*background-color: #333;*/
-            border-bottom: 1px solid grey;
+            border-bottom: 1px solid #EEE;
             overflow: hidden;
 
         }
+        .toptopnav a {
+                    float: left;
+                    display: block;
+                    text-align: center;
+                    color:grey;
+                    text-decoration: none;
+                    border-bottom: 1px solid transparent;
+        }
+        .toptopnav a.right {
+          float: right;
+          display: block;
+          text-align: center;
+          text-decoration: none;
+          font-family: monospace;
+        }
 
+
+
+        .topnav {
+                    /*background-color: #333;*/
+                    overflow: hidden;
+
+                }
         /* Style the links inside the navigation bar */
         .topnav a {
             float: left;
             display: block;
             text-align: center;
             color:grey;
-            padding: 14px 16px;
+            padding: 10px 12px;
             text-decoration: none;
             border-bottom: 3px solid transparent;
         }
@@ -107,16 +129,10 @@
             border-bottom: 3px solid red;
         }
 
-        .topnav a.right {
-          float: right;
-          display: block;
-          text-align: center;
-          text-decoration: none;
-          font-family: monospace;
-        }
+
 
         .footernavbar {
-          border-top: 1px solid grey;
+          border-top: 1px solid #EEE;
           overflow: hidden;
           position: fixed;
           bottom: 0;

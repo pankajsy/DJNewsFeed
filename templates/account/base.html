@@ -29,13 +29,23 @@
 
 
 <div class="main">
-        <div class="topnav">
-            <a><img src="{% static 'account/images/fav.ico' %}" height="25"/><span style="cursor:pointer" onclick="openNav()"> &#9776; {{ view.title }}</span></a>
-            <a href="#home" class="na active">Home</a>
-            <a href="#news" class="na">News</a>
-            <a href="#contact" class="na">Contact</a>
-            <a href="{% url 'account:users_update' user_pk=user.user.id %}" class="right" href="javascript:void(0)" onclick="closeNav()">{{ user.email }} &#9776;</a>
+        <div class="toptopnav">
+            <a>&#9776;<img onclick="openNav()" src="{% static 'account/images/appicon.png' %}" height="35p"/>{{ view.title }}</a>
+            <!--<a href="#home" class="na active">Home</a>-->
+            <!--<a href="#news" class="na">News</a>-->
+            <!--<a href="#contact" class="na">Contact</a>-->
+            <a href="{% url 'account:users_update' user_pk=user.user.id %}" class="right">{{ user.email }} &#9776;</a>
 
+        </div>
+
+        <div class="topnav" id="topnavid">
+            <a href="#home" class="na active">News</a>
+            <a href="#news" class="na">Finance</a>
+            <a href="#contact" class="na">Sports</a>
+            <a href="#contact" class="na">Politics</a>
+            <a href="#contact" class="na">Entertainment</a>
+            <a href="#contact" class="na">Lifestyle</a>
+            <a href="#contact" class="na">More...</a>
         </div>
 
         <div class="footernavbar">
@@ -80,7 +90,7 @@
 
 
 <script>
-    var tabs = document.getElementsByClassName("topnav")[0].getElementsByClassName("na");
+    var tabs = document.getElementById("topnavid").getElementsByClassName("na");
     for (var i = 0; i < tabs.length; i++) {
       tabs[i].addEventListener("click", function() {
         var current = document.getElementsByClassName("na active");
