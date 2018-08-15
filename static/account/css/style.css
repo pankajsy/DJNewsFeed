@@ -27,41 +27,65 @@
         }
 */
         body{
-        background-size:100%;
-        background-repeat: repeat-y;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
+            background-size:100%;
+            background-repeat: repeat-y;
+            margin: 0;
+            font-family: monospace;;
+        }
+
+        .main {
+                max-width: 75%;
+                margin: auto;
+                background: white;
+                padding: 10px;
+            }
+
+        hr {
+            margin: auto;
+            width: 40%;
         }
 
         .sidenav {
             height: 100%;
-            width: 200px;
+            width: 0;
             position: fixed;
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #111;
+            background-color: white;
             overflow-x: hidden;
+            transition: 0.5s;
             padding-top: 20px;
         }
 
         .sidenav a {
-            padding: 6px 8px 6px 26px;
+            padding: 8px 8px 8px 32px;
             text-decoration: none;
-            font-size: 15px;
-            color: #818181;
+            color: grey;
             display: block;
+            transition: 0.3s;
         }
 
         .sidenav a:hover {
             color: #f1f1f1;
         }
 
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            margin-left: 25px;
+        }
+
+
+
+
         /* Add a black background color to the top navigation */
         .topnav {
             /*background-color: #333;*/
             border-bottom: 1px solid grey;
             overflow: hidden;
+
         }
 
         /* Style the links inside the navigation bar */
@@ -76,18 +100,28 @@
         }
 
         .topnav a:hover {
-            border-bottom: 3px solid red;
+            border-bottom: 3px solid green;
         }
 
         .topnav a.active {
             border-bottom: 3px solid red;
         }
+
+        .topnav a.right {
+          float: right;
+          display: block;
+          text-align: center;
+          text-decoration: none;
+          font-family: monospace;
+        }
+
         .footernavbar {
           border-top: 1px solid grey;
           overflow: hidden;
           position: fixed;
           bottom: 0;
-          width: 100%;
+          width: 75%;
+
         }
 
         .footernavbar a {
@@ -102,8 +136,8 @@
           float: right;
           display: block;
           text-align: center;
-          padding-right: 255px;
           text-decoration: none;
+          font-family: monospace;
         }
 
        /* .pagination a {
@@ -120,21 +154,8 @@
             background-color: dodgerblue;
             color: white;
         }
-
         .pagination a:hover:not(.active) {background-color: #ddd;}
 */
-        .main {
-            margin-left: 200px; /* Same as the width of the sidenav */
-            font-size: 15px; /* Increased text to enable scrolling */
-            padding: 0px 10px;
-        }
-
-
-
-        hr {
-            margin: auto;
-            width: 40%;
-        }
 
         @media screen and (max-height: 450px) {
             .sidenav {padding-top: 15px;}
