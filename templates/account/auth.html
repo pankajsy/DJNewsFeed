@@ -1,11 +1,13 @@
 {% extends 'account/base.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
+
 {% load static %}
 <div style="width:  20%; margin: 30px auto;">
     <form method="post" action="{% url 'account:admin_login' %}" enctype="multipart/form-data" novalidate>
-        <label><h3>Please Login to proceed!</h3></label>
+        <label><h3>Login to proceed!</h3></label>
         {% csrf_token %}
-        {% include 'account/base_form.html' with form=form %}
+         {{ form|crispy }}
         <!--<label>Email: </label><br>{{ form.email }}<br>-->
         <!--<label>Password: </label><br> {{ form.password }}<br><br>-->
         <input class="button button4" type="submit" name="submit" value="Login" style="width: 100%;"/>
