@@ -10,11 +10,16 @@
     <link rel="icon" href="{%  static 'account/images/fav.ico' %}" sizes="48x48" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
         integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a > {{APP_NAME}}</a>
+    <a ><img onclick="openNav()" src="{% static 'account/images/appicon.png' %}" height="35p"/></a>
     {% if user.is_authenticated %}
 
         <a href="{% url 'account:admin_users_list' %}">List Users</a>
@@ -30,12 +35,8 @@
 
 <div class="main">
         <div class="toptopnav">
-            <a>&#9776;<img onclick="openNav()" src="{% static 'account/images/appicon.png' %}" height="35p"/>{{ view.title }}</a>
-            <!--<a href="#home" class="na active">Home</a>-->
-            <!--<a href="#news" class="na">News</a>-->
-            <!--<a href="#contact" class="na">Contact</a>-->
-            <a href="{% url 'account:users_update' user_pk=user.user.id %}" class="right">{{ user.email }} &#9776;</a>
-
+            <a>&#9776;<img onclick="openNav()" src="{% static 'account/images/appicon.png' %}" height="35p"/></a>
+            <a href="{% url 'account:users_update' user_pk=user.user.id %}" class="right">{{ user.email }}<span style="font-size:15px">&#8942;</span></a>
         </div>
 
         <div class="topnav" id="topnavid">
