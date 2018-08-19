@@ -34,7 +34,7 @@
         }
 
         .main {
-                max-width: 75%;
+                max-width: 65%;
                 margin: auto;
                 background: white;
                 padding: 10px;
@@ -61,7 +61,7 @@
         .sidenav a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
-            color: grey;
+            color: black;
             display: block;
             transition: 0.3s;
         }
@@ -91,7 +91,7 @@
                     float: left;
                     display: block;
                     text-align: center;
-                    color:grey;
+                    color:black;
                     text-decoration: none;
                     border-bottom: 1px solid transparent;
         }
@@ -115,7 +115,7 @@
             float: left;
             display: block;
             text-align: center;
-            color:grey;
+            color:black;
             padding: 10px 12px;
             text-decoration: none;
             border-bottom: 3px solid transparent;
@@ -136,7 +136,7 @@
           overflow: hidden;
           position: fixed;
           bottom: 0;
-          width: 75%;
+          width: 65%;
 
         }
 
@@ -154,6 +154,13 @@
           text-align: center;
           text-decoration: none;
           font-family: monospace;
+        }
+
+        dots{
+            width: 10px;
+            height: 10px;
+            background-image: radial-gradient(circle at center, black 10px, transparent 10px);
+            background-size: 15px 15px;
         }
 
        /* .pagination a {
