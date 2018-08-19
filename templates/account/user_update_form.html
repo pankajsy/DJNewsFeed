@@ -1,12 +1,13 @@
 {% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
     <div style="width: 20%; margin: 30px auto;">
         <form enctype="multipart/form-data" method="post" action="">
-            <label><h3>Edit Profile</h3></label>
+            <label><h4>Edit Profile</h4></label>
             {% csrf_token %}
-            <!--{{ form.as_p}}-->
-            {% include 'account/base_form.html' with form=form %}
-            <input class="button button4" type="submit" value="Update" style="width: 100%;"/>
+            {{ form|crispy }}
+            <input class="button button4" type="submit" value="UPDATE" style="width: 100%;"/>
         </form>
     </div>
 {% endblock %}
