@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'core',
     'account',
-    'widget_tweaks',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -198,3 +198,5 @@ WEATHER_API = ""
 
 DASHBOARD_LINK = ""
 S3_HOST = ""
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
