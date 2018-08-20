@@ -9,3 +9,8 @@ timeformat = "%Y-%m-%d %H:%M:%S"
 @app.task
 def add(x, y):
     return x + y
+
+@app.tasks
+def apicollectdata():
+
+    print("done")

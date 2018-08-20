@@ -200,3 +200,6 @@ DASHBOARD_LINK = ""
 S3_HOST = ""
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+BASE_NEWS_API = config('BASE_NEWS_API', cast=str)
+
+TIME_FORMAT = "%Y-%m-%d %H:%M:%S"

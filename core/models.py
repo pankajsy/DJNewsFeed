@@ -103,7 +103,7 @@ class Source(Basemodel):
     category = models.CharField(choices=CATEGORY, max_length=200)
 
 class Article(Basemodel):
-    published_at = models.DateTimeField(auto_now_add=False, blank=False, null=False)
+    published_at = models.DateTimeField(null=True, auto_now_add=False, blank=True)
     author = models.CharField(blank=True, null=True, max_length=100)
     title = models.CharField(blank=True, null=True, max_length=100)
     desc = models.TextField(blank=True, null=True)
