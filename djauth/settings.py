@@ -202,5 +202,6 @@ S3_HOST = ""
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 BASE_NEWS_API = config('BASE_NEWS_API', cast=str)
 SOURCE_API = config('SOURCE_API', cast=str)
+TOP_STORIES_API = config('TOP_STORIES_API', cast=str)
 
 TIME_FORMAT = "%Y-%m-%d %H:%M:%S"

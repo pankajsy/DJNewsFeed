@@ -96,9 +96,9 @@ LANGUAGE = (
 )
 
 class Source(Basemodel):
-    name = models.CharField(blank=False, null=False, max_length=100)
-    uid = models.CharField(blank=True, null=True, max_length=100)
-    desc = models.TextField(blank=True, null=True)
+    name = models.CharField(blank=False, null=True, max_length=100)
+    uid = models.CharField(blank=False, null=True, max_length=100)
+    desc = models.TextField(blank=False, null=True)
     url = models.URLField()
     category = models.CharField(choices=CATEGORY, max_length=200)
     language = models.CharField(choices=LANGUAGE, max_length=200)
@@ -112,8 +112,11 @@ class Article(Basemodel):
     author = models.CharField(blank=True, null=True, max_length=100)
     title = models.CharField(blank=True, null=True, max_length=100)
     desc = models.TextField(blank=True, null=True)
-    url = models.URLField()
-    urltoimage = models.URLField()
+    url = models.URLField(blank=True, null=True)
+    urltoimage = models.URLField(blank=True, null=True)
+    category = models.CharField(choices=CATEGORY, max_length=200)
+    country = models.CharField(choices=COUNTRY, max_length=200)
+
 
     def __str__(self):
         return self.title
