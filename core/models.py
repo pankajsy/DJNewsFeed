@@ -107,7 +107,9 @@ class Source(Basemodel):
         return self.uid
 
 class Article(Basemodel):
-    article_source = models.ForeignKey(Source, related_name='article_source')
+    article_source_id = models.CharField(blank=True, null=True, max_length=200)
+    article_source = models.CharField(blank=True, null=True, max_length=200)
+    # article_source = models.ForeignKey(Source, related_name='article_source')
     published_at = models.DateTimeField(null=True, auto_now_add=False, blank=True)
     author = models.CharField(blank=True, null=True, max_length=100)
     title = models.CharField(blank=True, null=True, max_length=100)
@@ -116,7 +118,6 @@ class Article(Basemodel):
     urltoimage = models.URLField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY, max_length=200)
     country = models.CharField(choices=COUNTRY, max_length=200)
-
 
     def __str__(self):
         return self.title

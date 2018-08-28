@@ -1,33 +1,41 @@
 {% extends 'account/base.html' %}
-{% block content %}
 {% load static %}
 
-    <div style="overflow-x:auto;">
-    {% if is_paginated %}
-      <ul class="pagination">
-        {% if page_obj.has_previous %}
-          <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
-        {% else %}
-          <li class="disabled"><span>&laquo;</span></li>
+{% block content %}
+
+<div style="overflow-x:auto;">
+    <h3>{{ view.title }}</h3>
+    <table style="width:70%">
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for a in articles %}
+    <tr>
+        <th>{{a.article_source}}</th>
+        <th>{{a.published_at}}</th>
+        <th>{{a.title}}</th>
+        <th>{{a.desc}}</th>
+        <th>{{a.urltoimage}}</th>
+        <th>{{a.url}}</th>
+    </tr>
+    {% endfor %}
+
+</table>
+  <div class="pagination">
+        {% if articles.has_previous %}
+        <a href="?articlespage={{ articles.previous_page_number }}">&laquo;</a>
         {% endif %}
-
-
-        {% for i in paginator.page_range %}
-          {% if page_obj.number == i %}
-            <li class="active"><span>[ {{ i }} ]<span class="sr-only">(current)</span></span></li>
-          {% else %}
-            <li><a href="?page={{ i }}">[ {{ i }} ]</a></li>
-          {% endif %}
-        {% endfor %}
-
-
-        {% if page_obj.has_next %}
-          <li><a href="?page={{ page_obj.next_page_number }}">&raquo; next</a></li>
-        {% else %}
-          <li class="disabled"><span>&raquo;</span></li>
+        <a class="active">{{ articles.number }}</a>
+        <a>  <-> {{ articles.paginator.num_pages }}.</a>
+        {% if articles.has_next %}
+        <a href="?articlespage={{ articles.next_page_number }}">&raquo;</a>
         {% endif %}
-      </ul>
-    {% endif %}
-    </div>
-
+  </div>
+</div>
 {% endblock %}

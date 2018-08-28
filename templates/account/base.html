@@ -49,6 +49,10 @@
             <a href="#contact" class="na">More...</a>
         </div>
 
+        <div class="mainbody">
+            {% block content %}
+            {% endblock %}
+        </div>
         <div class="footernavbar">
           <a href="#">about</a>
           <a href="#">status</a>
@@ -56,8 +60,7 @@
           <a href="#">@pankajsy Github</a>
           <a class="right" id="clock"></a>
         </div>
-    {% block content %}
-    {% endblock %}
+
 
     <center>
         {% if messages %}

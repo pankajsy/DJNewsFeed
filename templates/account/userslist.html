@@ -3,40 +3,40 @@
 {% load static %}
 
 
-<center>
 
-    <div style="overflow-x:auto;"><h3>{{ view.title }}</h3>
+<div style="overflow-x:auto;">
+    <h3>{{ view.title }}</h3>
     <table style="width:70%">
-        <tr>
-            <th>Id</th>
-            <th>Email</th>
-            <th>username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        {% for user in users %}
-        <tr>
-            <th>{{user.id}}</th>
-            <th>{{user.user.email}}</th>
-            <th>{{user.user.username}}</th>
-            <th>{{user.user.first_name}}</th>
-            <th>{{user.user.last_name}}</th>
-            <th>
-                <a class="button button4" href="{% url 'account:users_update' user_pk=user.user.id %}" style="width: 100%;">EDIT</a>
-            </th>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <th>{{user.id}}</th>
+        <th>{{user.user.email}}</th>
+        <th>{{user.user.username}}</th>
+        <th>{{user.user.first_name}}</th>
+        <th>{{user.user.last_name}}</th>
+        <th>
+            <a class="button button4" href="{% url 'account:users_update' user_pk=user.user.id %}" style="width: 100%;">EDIT</a>
+        </th>
 
-           <th>
-                <form action="{% url 'account:admin_delete' %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" value="{{user.user.id}}" name="pk" onclick="return confirm('Are you sure?')" >DELETE</button>
-                </form>
-            </th>
-        </tr>
-        {% endfor %}
+       <th>
+            <form action="{% url 'account:admin_delete' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" value="{{user.user.id}}" name="pk" onclick="return confirm('Are you sure?')" >DELETE</button>
+            </form>
+        </th>
+    </tr>
+    {% endfor %}
 
-    </table>
+</table>
 
     <div class="pagination">
         {% if users.has_previous %}
@@ -45,10 +45,9 @@
         <a class="active">{{ users.number }}</a>
         <a>  <-> {{ users.paginator.num_pages }}.</a>
         {% if users.has_next %}
-        <a href="?userspage={{ users.next_page_number }}">&raquo;</a>
+        <a href="?userspage={{ users.next_page_n    umber }}">&raquo;</a>
         {% endif %}
     </div>
 
-    </div>
-</center>
+</div>
 {% endblock %}

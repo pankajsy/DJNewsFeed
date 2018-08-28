@@ -31,7 +31,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 timeformat = '%Y-%m-%d %H:%M:%S'
 def index(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('account:admin_users_list'))
+        # return HttpResponseRedirect(reverse('account:admin_users_list'))
+        return HttpResponseRedirect(reverse('core:feed'))
     else:
         return HttpResponseRedirect(reverse('account:admin_login'))
 

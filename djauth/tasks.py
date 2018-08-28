@@ -44,6 +44,7 @@ def apicollectdata():
         print (e.message)
 
 import datetime
+default_image = "https://drive.google.com/file/d/1tdCpzV72TWu5CDVfgspzXqK2bQOL1SDX/view?usp=sharing"
 def topdata_apicollectdata():
     category = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology']
     country = ['us', 'in']
@@ -53,25 +54,27 @@ def topdata_apicollectdata():
             try:
                 res = requests.get(url).json()
                 if res.get('status')=='ok':
+                    # print(res)
                     articles = res.get('articles')
                     for s in articles:
-                        print(s)
+                        # print(s)
                         author= s.get('author') if 'author' in s else ''
                         title= s.get('title') if 'title' in s else ''
                         description= s.get('description') if 'description' in s else ''
                         url= s.get('url') if 'url' in s else ''
-                        urltoimage= s.get('urlToImage') if 'urlToImage' in s else ''
+                        urltoimage= s.get('urlToImage') if 'urlToImage' in s else default_image
                         published_at= s.get('publishedAt') if 'publishedAt' in s else ''
 
                         published_at = datetime.datetime.strptime(str(published_at), "%Y-%m-%dT%H:%M:%SZ")
                         source_uid = s.get('source').get('id') if 'source' in s else ''
                         source_name = s.get('source').get('name') if 'source' in s else ''
-                        source_obj, created_s = Source.objects.update_or_create(uid=source_uid,
-                                                                          defaults={
-                                                                              "name": source_name,
-                                                                              "uid": source_uid,
-                                                                          })
-                        artil, created = Article.objects.create(article_source = source_obj,
+                        # source_obj, created_s = Source.objects.update_or_create(uid=source_uid,
+                        #                                                   defaults={
+                        #                                                       "name": source_name,
+                        #                                                       "uid": source_uid,
+                        #                                                   })
+                        artil = Article.objects.create(article_source_id = source_uid,
+                                                                article_source = source_name,
                                                                   published_at = published_at,
                                                                   author = author,
                                                                   title = title,
@@ -81,6 +84,6 @@ def topdata_apicollectdata():
                                                                   category = t,
                                                                   country = c
                                                                   )
-                        print (created)
+                        print (artil.title)
             except Exception as e:
                 print (e.message)
